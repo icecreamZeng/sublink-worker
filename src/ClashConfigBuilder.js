@@ -65,13 +65,13 @@ export class ClashConfigBuilder extends BaseConfigBuilder {
 		this.config['proxy-groups'].unshift({
 		    type: "select",
 		    name: outbound,
-		    proxies: ['⚡ 自动选择', ...proxyList] // 修改默认选项为 "⚡ 自动选择"
+		    proxies: ['⚡ 自动选择', ...proxyList.filter(p => p !== '⚡ 自动选择')] // 修改默认选项为 "⚡ 自动选择"
 		});
 	    }else if (outbound === '🔒 国内服务') {
 		this.config['proxy-groups'].push({
 		    type: "select",
 		    name: outbound,
-		    proxies: [...proxyList] // 修改默认选项为 "DIRECT"
+		    proxies: ['DIRECT', ...proxyList.filter(p => p !== 'DIRECT')] // 修改默认选项为 "DIRECT"
 		});
 	    } else {
 		this.config['proxy-groups'].push({

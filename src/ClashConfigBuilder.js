@@ -37,7 +37,7 @@ export class ClashConfigBuilder extends BaseConfigBuilder {
         this.config['proxy-groups'].push({
             name: '⚡ 自动选择',
             type: 'url-test',
-            proxies: DeepCopy(proxyList),
+            proxies: ['DIRECT',...DeepCopy(proxyList)],
             url: 'https://www.gstatic.com/generate_204',
             interval: 300,
             lazy: false

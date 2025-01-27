@@ -67,13 +67,7 @@ export class ClashConfigBuilder extends BaseConfigBuilder {
 		    name: outbound,
 		    proxies: ['⚡ 自动选择', ...proxyList] // 修改默认选项为 "⚡ 自动选择"
 		});
-	    } else if (outbound === '私有网络') {
-		this.config['proxy-groups'].push({
-		    type: "select",
-		    name: outbound,
-		    proxies: ['DIRECT', ...proxyList] // 修改默认选项为 "DIRECT"
-		});
-	    } else if (outbound === '国内服务') {
+	    }else if (outbound === '🔒 国内服务') {
 		this.config['proxy-groups'].push({
 		    type: "select",
 		    name: outbound,

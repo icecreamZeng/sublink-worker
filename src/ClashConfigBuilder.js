@@ -47,19 +47,45 @@ export class ClashConfigBuilder extends BaseConfigBuilder {
         outbounds.unshift('🚀 节点选择');
         
         outbounds.forEach(outbound => {
-            if (outbound !== '🚀 节点选择') {
-                this.config['proxy-groups'].push({
-                    type: "select",
-                    name: outbound,
-                    proxies: ['🚀 节点选择', ...proxyList]
-                });
-            } else {
-                this.config['proxy-groups'].unshift({
-                    type: "select",
-                    name: outbound,
-                    proxies: proxyList
-                });
-            }
+            // if (outbound !== '🚀 节点选择') {
+            //     this.config['proxy-groups'].push({
+            //         type: "select",
+            //         name: outbound,
+            //         proxies: ['🚀 节点选择', ...proxyList]
+            //     });
+            // } else {
+            //     this.config['proxy-groups'].unshift({
+            //         type: "select",
+            //         name: outbound,
+            //         proxies: proxyList
+            //     });
+            // }
+
+	    if (outbound === '🚀 节点选择') {
+		this.config['proxy-groups'].unshift({
+		    type: "select",
+		    name: outbound,
+		    proxies: ['⚡ 自动选择', ...proxyList] // 修改默认选项为 "⚡ 自动选择"
+		});
+	    } else if (outbound === '私有网络') {
+		this.config['proxy-groups'].push({
+		    type: "select",
+		    name: outbound,
+		    proxies: ['DIRECT', ...proxyList] // 修改默认选项为 "DIRECT"
+		});
+	    } else if (outbound === '国内服务') {
+		this.config['proxy-groups'].push({
+		    type: "select",
+		    name: outbound,
+		    proxies: ['DIRECT', ...proxyList] // 修改默认选项为 "DIRECT"
+		});
+	    } else {
+		this.config['proxy-groups'].push({
+		    type: "select",
+		    name: outbound,
+		    proxies: ['🚀 节点选择', ...proxyList]
+		});
+	    }
         });
 
         if (Array.isArray(this.customRules)) {

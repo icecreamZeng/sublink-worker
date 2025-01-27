@@ -71,7 +71,7 @@ export class ClashConfigBuilder extends BaseConfigBuilder {
 		this.config['proxy-groups'].push({
 		    type: "select",
 		    name: outbound,
-		    proxies: ['DIRECT', ...proxyList] // 修改默认选项为 "DIRECT"
+		    proxies: [...proxyList] // 修改默认选项为 "DIRECT"
 		});
 	    } else {
 		this.config['proxy-groups'].push({
